@@ -4,7 +4,7 @@
 
 ### Foundation
 - [x] Step 1: Project Setup and Basic Structure
-- [ ] Step 2: GitHub Authentication Module
+- [x] Step 2: GitHub Authentication Module
 - [ ] Step 3: Data Models
 
 ### Data Fetching
