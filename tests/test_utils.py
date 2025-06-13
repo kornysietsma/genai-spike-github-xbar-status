@@ -21,9 +21,7 @@ sys.path.insert(0, os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 from github_status_xbar import (
     format_time_ago,
     truncate_text,
-    get_github_token,
     is_xbar_environment,
-    GITHUB_TOKEN_ENV,
 )
 
 
@@ -99,14 +97,6 @@ class TestTruncateText:
 
 
 class TestEnvironmentDetection:
-    
-    def test_get_github_token_present(self):
-        with patch.dict(os.environ, {GITHUB_TOKEN_ENV: "test_token"}):
-            assert get_github_token() == "test_token"
-    
-    def test_get_github_token_missing(self):
-        with patch.dict(os.environ, {}, clear=True):
-            assert get_github_token() is None
     
     def test_is_xbar_environment_swiftbar(self):
         with patch.dict(os.environ, {"SWIFTBAR": "1"}):

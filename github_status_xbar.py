@@ -12,9 +12,10 @@ import os
 import sys
 import logging
 from datetime import datetime
-from typing import Optional
 
 import click
+
+from github_auth import get_authenticated_client
 
 # Configuration constants
 REFRESH_INTERVAL = 30  # seconds (managed by xbar filename)
@@ -22,17 +23,12 @@ NOTIFICATION_WINDOW = 24  # hours
 ACTIVITY_THRESHOLD_FEW = 5
 ACTIVITY_THRESHOLD_LOTS = 6
 
-# Environment variables
-GITHUB_TOKEN_ENV = "GITHUB_TOKEN"
 
 # Display constants
 ICON_NO_ACTIVITY = "🔵"
 ICON_FEW_ACTIVITY = "🟡"
 ICON_LOTS_ACTIVITY = "🔴"
 
-# Error messages
-ERROR_NO_TOKEN = "GitHub token not found in environment"
-ERROR_API_FAILURE = "Failed to connect to GitHub API"
 
 # Logging setup
 logging.basicConfig(
@@ -73,9 +69,6 @@ def truncate_text(text: str, max_length: int = 50) -> str:
     return text[:max_length - 3] + "..."
 
 
-def get_github_token() -> Optional[str]:
-    return os.getenv(GITHUB_TOKEN_ENV)
-
 
 def is_xbar_environment() -> bool:
     # xbar sets SWIFTBAR environment variable
@@ -83,17 +76,16 @@ def is_xbar_environment() -> bool:
 
 
 def output_xbar_widget():
-    token = get_github_token()
-    if not token:
+    try:
+        get_authenticated_client()  # Verify authentication works
+        # TODO: Implement actual GitHub data fetching
+        print(f"{ICON_NO_ACTIVITY} GitHub")
+        print("---")
+        print("No activity")
+    except Exception as e:
         print(f"{ICON_LOTS_ACTIVITY} Error")
         print("---")
-        print(ERROR_NO_TOKEN)
-        return
-    
-    # TODO: Implement actual GitHub data fetching
-    print(f"{ICON_NO_ACTIVITY} GitHub")
-    print("---")
-    print("No activity")
+        print(f"Error: {str(e)}")
 
 
 @click.command()
@@ -103,16 +95,18 @@ def cli(debug: bool):
     if debug:
         logger.setLevel(logging.DEBUG)
     
-    token = get_github_token()
-    if not token:
-        click.echo(f"Error: {ERROR_NO_TOKEN}", err=True)
-        click.echo("Set the GITHUB_TOKEN environment variable with your GitHub personal access token.")
+    try:
+        get_authenticated_client()  # Verify authentication works
+        # TODO: Implement actual GitHub data fetching
+        click.echo("GitHub Activity Monitor")
+        click.echo("=" * 50)
+        click.echo("No activity to display")
+    except Exception as e:
+        click.echo(f"Error: {str(e)}", err=True)
+        if debug:
+            import traceback
+            traceback.print_exc()
         sys.exit(1)
-    
-    # TODO: Implement actual GitHub data fetching
-    click.echo("GitHub Activity Monitor")
-    click.echo("=" * 50)
-    click.echo("No activity to display")
 
 
 def main() -> None:
