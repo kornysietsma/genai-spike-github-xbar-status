@@ -1,5 +1,12 @@
 # GitHub Activity Monitor for xbar
 
+> [!WARNING]
+> **Experimental GenAI Spike Project**
+> 
+> This is an experimental spike to explore GenAI tooling capabilities. The code is intentionally verbose, over-documented, and not yet functional. This project is being built incrementally using AI assistance to test development workflows and tooling integration.
+> 
+> **Not ready for production use!**
+
 A Python-based tool that monitors your GitHub activity and displays it in your macOS menu bar using [xbar](https://github.com/matryer/xbar) (formerly BitBar).
 
 ## Features
@@ -30,7 +37,7 @@ A Python-based tool that monitors your GitHub activity and displays it in your m
 
 ### As xbar Widget
 The script automatically detects when running in xbar and displays:
-- Menu bar icon showing activity level (=5 none, =á some, =4 lots)
+- Menu bar icon showing activity level (=5 none, =ï¿½ some, =4 lots)
 - Dropdown with PRs, Issues, and Notifications grouped by time
 
 ### As Command Line Tool
