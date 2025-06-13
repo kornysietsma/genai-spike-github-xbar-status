@@ -43,14 +43,6 @@ logger = logging.getLogger(__name__)
 
 
 def format_time_ago(timestamp: datetime) -> str:
-    """Format a timestamp as a human-readable time ago string.
-    
-    Args:
-        timestamp: The datetime to format
-        
-    Returns:
-        A string like "1h20m" or "2d3h"
-    """
     now = datetime.now(timestamp.tzinfo)
     delta = now - timestamp
     
@@ -76,41 +68,21 @@ def format_time_ago(timestamp: datetime) -> str:
 
 
 def truncate_text(text: str, max_length: int = 50) -> str:
-    """Truncate text to a maximum length, adding ellipsis if needed.
-    
-    Args:
-        text: The text to truncate
-        max_length: Maximum length of the output
-        
-    Returns:
-        Truncated text with ellipsis if needed
-    """
     if len(text) <= max_length:
         return text
     return text[:max_length - 3] + "..."
 
 
 def get_github_token() -> Optional[str]:
-    """Get GitHub token from environment.
-    
-    Returns:
-        The GitHub token or None if not found
-    """
     return os.getenv(GITHUB_TOKEN_ENV)
 
 
 def is_xbar_environment() -> bool:
-    """Detect if running in xbar environment.
-    
-    Returns:
-        True if running in xbar, False otherwise
-    """
     # xbar sets SWIFTBAR environment variable
     return "SWIFTBAR" in os.environ or "BITBAR" in os.environ
 
 
 def output_xbar_widget():
-    """Output formatted data for xbar widget display."""
     token = get_github_token()
     if not token:
         print(f"{ICON_LOTS_ACTIVITY} Error")
@@ -144,7 +116,6 @@ def cli(debug: bool):
 
 
 def main() -> None:
-    """Main entry point that detects execution context."""
     if is_xbar_environment():
         output_xbar_widget()
     else:
