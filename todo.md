@@ -11,7 +11,7 @@
 - [x] Step 4: Fetching Pull Requests
 - [x] Step 5: Fetching Issues
 - [x] Step 6: Fetching Notifications
-- [ ] Step 7: Activity Aggregation
+- [x] Step 7: Activity Aggregation
 
 ### Display Logic
 - [ ] Step 8: Time-based Grouping Logic
