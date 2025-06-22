@@ -9,7 +9,7 @@
 
 ### Data Fetching
 - [x] Step 4: Fetching Pull Requests
-- [ ] Step 5: Fetching Issues
+- [x] Step 5: Fetching Issues
 - [ ] Step 6: Fetching Notifications
 - [ ] Step 7: Activity Aggregation
 
