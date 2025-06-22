@@ -8,7 +8,7 @@
 - [x] Step 3: Simple Data Models
 
 ### Data Fetching
-- [ ] Step 4: Fetching Pull Requests
+- [x] Step 4: Fetching Pull Requests
 - [ ] Step 5: Fetching Issues
 - [ ] Step 6: Fetching Notifications
 - [ ] Step 7: Activity Aggregation
