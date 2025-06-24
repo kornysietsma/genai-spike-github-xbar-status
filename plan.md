@@ -48,20 +48,18 @@ The module should handle all authentication concerns and be fully tested with mo
 ### Step 3: Data Models
 
 ```text
-Create data models for the three types of GitHub activity we're tracking.
+Use PyGithub's built-in models directly instead of creating custom data models.
 
-1. Create models.py with dataclasses for PullRequest, Issue, and Notification
-2. Each model should have fields for:
-   - id, title, url, repository_name, created_at, updated_at
-   - PullRequest adds: is_draft, author, review_requested, mentioned
-   - Issue adds: author, assignee, mentioned
-   - Notification adds: reason, unread
-3. Add a method to calculate age as a timedelta
-4. Add a method to format age as brief string (e.g., "1h20m", "3d")
-5. Write comprehensive tests for all model functionality
-6. Ensure models are immutable (frozen dataclasses)
+1. Rely on PyGithub's PullRequest, Issue, and Notification objects
+2. Create utility functions in github_utils.py for common operations:
+   - format_age() to format age as brief string (e.g., "1h20m", "3d") 
+   - get_time_bucket() to categorize items by time
+   - is_dependabot_item() to check if item is from dependabot
+   - truncate_title() for display formatting
+3. Write tests for all utility functions
+4. Use PyGithub objects throughout the codebase
 
-Models should be simple data containers with minimal logic.
+This approach avoids data translation overhead and leverages PyGithub's existing functionality.
 ```
 
 ### Step 4: Fetching Pull Requests

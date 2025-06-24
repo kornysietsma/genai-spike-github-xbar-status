@@ -14,7 +14,7 @@
 - [x] Step 7: Activity Aggregation
 
 ### Display Logic
-- [ ] Step 8: Time-based Grouping Logic
+- [x] Step 8: Time-based Grouping Logic
 - [ ] Step 9: Basic CLI Formatter
 - [ ] Step 10: xbar Formatter
 

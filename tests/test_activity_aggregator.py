@@ -1,6 +1,5 @@
 #!/usr/bin/env python3
 
-import pytest
 from unittest.mock import Mock, patch
 from activity_aggregator import ActivityData, fetch_all_activity
 

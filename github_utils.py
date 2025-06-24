@@ -2,7 +2,7 @@
 """Utility functions for working with PyGithub objects."""
 
 from datetime import datetime, timedelta
-from typing import List, Union
+from typing import Union
 from github import PullRequest, Issue, Notification
 
 

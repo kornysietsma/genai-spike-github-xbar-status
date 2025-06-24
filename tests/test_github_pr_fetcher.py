@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
 
-import pytest
-from unittest.mock import Mock, MagicMock
+from unittest.mock import Mock
 from github_pr_fetcher import fetch_pull_requests
 
 

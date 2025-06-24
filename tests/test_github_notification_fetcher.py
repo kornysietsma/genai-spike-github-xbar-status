@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
 
-import pytest
 from datetime import datetime, timedelta, timezone
-from unittest.mock import Mock, call
+from unittest.mock import Mock
 from github_notification_fetcher import fetch_notifications
 
 
