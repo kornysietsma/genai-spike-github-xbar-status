@@ -59,3 +59,17 @@ Run tests:
 ```bash
 uv run tests/test_utils.py
 ```
+
+## LLM development notes
+
+This was initially developed using a quite complex approach, trying to TDD it. But that involved a _lot_ of structure and abstraction, in order to mock out the Github API - for a simple program it ceased to be valuable to keep going this way, it made instead for a _bad_ example of over-engineering.
+
+So I've scrapped that approach, with a new prompt:
+
+> this project is a shambles. I wanted a simple xbar status app, it seems it's not a good fit for the complicated TDD approach.  Can you please remove all the tests - I'll test it manually - and all the extra structure added to make it testable. Please go back to a single uv script which meets the original spec.md but without tests. I've updated the spec.md to reflect this, can you please update plan.md and todo.md with the steps needed, once the tests are cleaned up, to finish the rest of the spec in a non-test-driven way?
+
+The latest commit is the newer, cleaned up approach - it looks more finishable now.
+
+In a real project I'd either add enough structure that github was behind an abstraction layer, and then test against a stub/mock version of that abstraction layer
+
+Or I'd use a fake github instance, running in Wiremock under Test Containers or using an open-source github API mock tool, and then test against that kind of external test double.

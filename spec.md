@@ -85,8 +85,8 @@ A Python-based tool for monitoring recent GitHub activity for a user, displaying
   - Activity thresholds: 0, 1-5, 6+
 
 #### Code Structure
-- Abstract GitHub API logic for testability
-- Include unit tests
+- Don't Abstract GitHub API logic
+- Don't use unit tests, testing will be manual
 - Display logic can remain in main code (text-based, easily testable)
 - No caching mechanism needed initially
 

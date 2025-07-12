@@ -1,30 +1,38 @@
-# GitHub Activity Monitor - Implementation Todo List
+# GitHub Activity Monitor - Todo List
 
-## Implementation Steps
+## Completed
+- [x] Remove all test files and testing infrastructure
+- [x] Consolidate into single uv script
+- [x] Basic authentication with GITHUB_TOKEN
+- [x] Fetch PRs (excluding drafts and dependabot)
+- [x] Fetch Issues (excluding dependabot)
+- [x] Fetch Notifications (mentions only from last 24h)
+- [x] Group items by type, time bucket, and repository
+- [x] Display appropriate emoji based on activity count
+- [x] Basic xbar and CLI output formatting
 
-### Foundation
-- [x] Step 1: Project Setup and Basic Structure
-- [x] Step 2: GitHub Authentication Module
-- [x] Step 3: Simple Data Models
+## High Priority - Core Functionality
+- [ ] Fix notification URLs (convert API URLs to web URLs)
+- [ ] Add proper error handling for rate limits
+- [ ] Improve error messages to be more helpful
 
-### Data Fetching
-- [x] Step 4: Fetching Pull Requests
-- [x] Step 5: Fetching Issues
-- [x] Step 6: Fetching Notifications
-- [x] Step 7: Activity Aggregation
+## Medium Priority - Improvements
+- [ ] Optimize API calls (avoid fetching full PR objects)
+- [ ] Add refresh menu item in xbar mode
+- [ ] Better handling of edge cases (long titles, unicode, etc)
 
-### Display Logic
-- [x] Step 8: Time-based Grouping Logic
-- [ ] Step 9: Basic CLI Formatter
-- [ ] Step 10: xbar Formatter
+## Low Priority - Nice to Have
+- [ ] Improve search queries for better coverage
+- [ ] Add CLI flags for configuration
+- [ ] Add debug timing information
+- [ ] Consider deduplication of results
 
-### Integration
-- [ ] Step 11: Error Handling and Display
-- [ ] Step 12: Main Script Integration
-- [ ] Step 13: Final Testing and Polish
-
-## Notes
-- Each step should be implemented with TDD approach
-- Run tests after each step to ensure nothing breaks
-- Commit after each completed step
-- Update this list as steps are completed
+## Testing Checklist
+- [ ] Test with no GITHUB_TOKEN set
+- [ ] Test with invalid GITHUB_TOKEN
+- [ ] Test with no activity
+- [ ] Test with 1-5 items (yellow emoji)
+- [ ] Test with 6+ items (red emoji)
+- [ ] Test clickable links in xbar
+- [ ] Test CLI mode with --debug flag
+- [ ] Test 30 second refresh in xbar
